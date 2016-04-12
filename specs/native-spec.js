@@ -404,7 +404,9 @@ describe('Backbone.Native', function(){
                 expect(window.XMLHttpRequest).toHaveBeenCalled();
                 expect(xhr.open).toHaveBeenCalledWith(
                     'GET', 'http://example.com/page.html?test=val', true);
-                expect(xhr.setRequestHeader).not.toHaveBeenCalled();
+                expect(xhr.setRequestHeader).toHaveBeenCalledWith(
+                    'Content-Type',
+                    'application/x-www-form-urlencoded; charset=UTF-8');
                 expect(xhr.send).toHaveBeenCalledWith(undefined);
                 expect(xhr.onload).toEqual(jasmine.any(Function));
                 expect(req).toBe(xhr);
@@ -429,7 +431,9 @@ describe('Backbone.Native', function(){
                 expect(window.XMLHttpRequest).toHaveBeenCalled();
                 expect(xhr.open).toHaveBeenCalledWith('POST',
                     'http://example.com/page.html?test=val', true);
-                expect(xhr.setRequestHeader).not.toHaveBeenCalled();
+                expect(xhr.setRequestHeader).toHaveBeenCalledWith(
+                    'Content-Type',
+                    'application/x-www-form-urlencoded; charset=UTF-8');
                 expect(xhr.send).toHaveBeenCalledWith('page=3&arg=section');
                 expect(xhr.onload).toEqual(jasmine.any(Function));
                 expect(req).toBe(xhr);
@@ -455,7 +459,9 @@ describe('Backbone.Native', function(){
                 expect(window.XMLHttpRequest).toHaveBeenCalled();
                 expect(xhr.open).toHaveBeenCalledWith('POST',
                     'http://example.com/page.html?test=val', true);
-                expect(xhr.setRequestHeader).not.toHaveBeenCalled();
+                expect(xhr.setRequestHeader).toHaveBeenCalledWith(
+                    'Content-Type',
+                    'application/x-www-form-urlencoded; charset=UTF-8');
                 expect(xhr.send).toHaveBeenCalledWith(data);
                 expect(xhr.onload).toEqual(jasmine.any(Function));
                 expect(req).toBe(xhr);
@@ -480,7 +486,9 @@ describe('Backbone.Native', function(){
                 expect(window.XMLHttpRequest).toHaveBeenCalled();
                 expect(xhr.open).toHaveBeenCalledWith('GET',
                     'http://example.com/page.html?test=val&page=3&arg=section', true);
-                expect(xhr.setRequestHeader).not.toHaveBeenCalled();
+                expect(xhr.setRequestHeader).toHaveBeenCalledWith(
+                    'Content-Type',
+                    'application/x-www-form-urlencoded; charset=UTF-8');
                 expect(xhr.send).toHaveBeenCalledWith(undefined);
                 expect(xhr.onload).toEqual(jasmine.any(Function));
                 expect(req).toBe(xhr);
@@ -505,7 +513,9 @@ describe('Backbone.Native', function(){
                 expect(window.XMLHttpRequest).toHaveBeenCalled();
                 expect(xhr.open).toHaveBeenCalledWith('HEAD',
                     'http://example.com/page.html?test=val&page=3&arg=section', true);
-                expect(xhr.setRequestHeader).not.toHaveBeenCalled();
+                expect(xhr.setRequestHeader).toHaveBeenCalledWith(
+                    'Content-Type',
+                    'application/x-www-form-urlencoded; charset=UTF-8');
                 expect(xhr.send).toHaveBeenCalledWith(undefined);
                 expect(xhr.onload).toEqual(jasmine.any(Function));
                 expect(req).toBe(xhr);
@@ -530,7 +540,9 @@ describe('Backbone.Native', function(){
                 expect(window.XMLHttpRequest).toHaveBeenCalled();
                 expect(xhr.open).toHaveBeenCalledWith('POST',
                     'http://example.com/page.html?test=val', true);
-                expect(xhr.setRequestHeader).not.toHaveBeenCalled();
+                expect(xhr.setRequestHeader).toHaveBeenCalledWith(
+                    'Content-Type',
+                    'application/x-www-form-urlencoded; charset=UTF-8');
                 expect(xhr.send).toHaveBeenCalledWith('{"page":3,"arg":"section"}');
                 expect(xhr.onload).toEqual(jasmine.any(Function));
                 expect(req).toBe(xhr);
@@ -580,7 +592,9 @@ describe('Backbone.Native', function(){
                 expect(window.XMLHttpRequest).toHaveBeenCalled();
                 expect(xhr.open).toHaveBeenCalledWith(
                     'GET', 'http://example.com/page.html?test=val', true);
-                expect(xhr.setRequestHeader).not.toHaveBeenCalled();
+                expect(xhr.setRequestHeader).toHaveBeenCalledWith(
+                    'Content-Type',
+                    'application/x-www-form-urlencoded; charset=UTF-8');
                 expect(beforeSend).toHaveBeenCalledWith(xhr);
                 expect(xhr.send).toHaveBeenCalledWith(undefined);
                 expect(xhr.onload).toEqual(jasmine.any(Function));
@@ -605,7 +619,9 @@ describe('Backbone.Native', function(){
                 expect(window.XMLHttpRequest).toHaveBeenCalled();
                 expect(xhr.open).toHaveBeenCalledWith(
                     'GET', 'http://example.com/page.html?test=val', true);
-                expect(xhr.setRequestHeader).not.toHaveBeenCalled();
+                expect(xhr.setRequestHeader).toHaveBeenCalledWith(
+                    'Content-Type',
+                    'application/x-www-form-urlencoded; charset=UTF-8');
                 expect(xhr.send).toHaveBeenCalledWith(undefined);
                 expect(xhr.onload).toEqual(jasmine.any(Function));
                 expect(req).toBe(xhr);
@@ -628,7 +644,9 @@ describe('Backbone.Native', function(){
                 expect(window.XMLHttpRequest).toHaveBeenCalled();
                 expect(xhr.open).toHaveBeenCalledWith(
                     'GET', 'http://example.com/page.html?test=val', true);
-                expect(xhr.setRequestHeader).not.toHaveBeenCalled();
+                expect(xhr.setRequestHeader).toHaveBeenCalledWith(
+                    'Content-Type',
+                    'application/x-www-form-urlencoded; charset=UTF-8');
                 expect(xhr.send).toHaveBeenCalledWith(undefined);
                 expect(xhr.onload).toEqual(jasmine.any(Function));
                 expect(req).toBe(xhr);
@@ -658,7 +676,9 @@ describe('Backbone.Native', function(){
                 expect(window.XMLHttpRequest).toHaveBeenCalled();
                 expect(xhr.open).toHaveBeenCalledWith(
                     'GET', 'http://example.com/page.html?test=val', true);
-                expect(xhr.setRequestHeader).not.toHaveBeenCalled();
+                expect(xhr.setRequestHeader).toHaveBeenCalledWith(
+                    'Content-Type',
+                    'application/x-www-form-urlencoded; charset=UTF-8');
                 expect(xhr.send).toHaveBeenCalledWith(undefined);
                 expect(xhr.onload).toEqual(jasmine.any(Function));
                 expect(req).toBe(xhr);
@@ -683,7 +703,9 @@ describe('Backbone.Native', function(){
                 expect(window.XMLHttpRequest).toHaveBeenCalled();
                 expect(xhr.open).toHaveBeenCalledWith(
                     'GET', 'http://example.com/page.html?test=val', true);
-                expect(xhr.setRequestHeader).not.toHaveBeenCalled();
+                expect(xhr.setRequestHeader).toHaveBeenCalledWith(
+                    'Content-Type',
+                    'application/x-www-form-urlencoded; charset=UTF-8');
                 expect(xhr.send).toHaveBeenCalledWith(undefined);
                 expect(xhr.onload).toEqual(jasmine.any(Function));
                 expect(req).toBe(xhr);
@@ -714,7 +736,9 @@ describe('Backbone.Native', function(){
                 expect(window.XMLHttpRequest).toHaveBeenCalled();
                 expect(xhr.open).toHaveBeenCalledWith(
                     'GET', 'http://example.com/page.html?test=val', true);
-                expect(xhr.setRequestHeader).not.toHaveBeenCalled();
+                expect(xhr.setRequestHeader).toHaveBeenCalledWith(
+                    'Content-Type',
+                    'application/x-www-form-urlencoded; charset=UTF-8');
                 expect(xhr.send).toHaveBeenCalledWith(undefined);
                 expect(xhr.onload).toEqual(jasmine.any(Function));
                 expect(req).toBe(xhr);
@@ -739,7 +763,9 @@ describe('Backbone.Native', function(){
                 expect(window.XMLHttpRequest).toHaveBeenCalled();
                 expect(xhr.open).toHaveBeenCalledWith(
                     'GET', 'http://example.com/page.html?test=val', true);
-                expect(xhr.setRequestHeader).not.toHaveBeenCalled();
+                expect(xhr.setRequestHeader).toHaveBeenCalledWith(
+                    'Content-Type',
+                    'application/x-www-form-urlencoded; charset=UTF-8');
                 expect(xhr.send).toHaveBeenCalledWith(undefined);
                 expect(xhr.onload).toEqual(jasmine.any(Function));
                 expect(req).toBe(xhr);

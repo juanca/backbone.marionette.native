@@ -248,7 +248,9 @@
                 expect(result).toBe(xhr);
                 expect(xhr.open).toHaveBeenCalledWith('GET', 'model/', true);
                 expect(xhr.send).toHaveBeenCalledWith(undefined);
-                expect(xhr.setRequestHeader).not.toHaveBeenCalled();
+                expect(xhr.setRequestHeader).toHaveBeenCalledWith(
+                    'Content-Type',
+                    'application/x-www-form-urlencoded; charset=UTF-8');
                 expect(error).not.toHaveBeenCalled();
                 expect(success).not.toHaveBeenCalled();
 
@@ -270,7 +272,9 @@
                 expect(result).toBe(xhr);
                 expect(xhr.open).toHaveBeenCalledWith('GET', 'model/', true);
                 expect(xhr.send).toHaveBeenCalledWith(undefined);
-                expect(xhr.setRequestHeader).not.toHaveBeenCalled();
+                expect(xhr.setRequestHeader).toHaveBeenCalledWith(
+                    'Content-Type',
+                    'application/x-www-form-urlencoded; charset=UTF-8');
                 expect(error).not.toHaveBeenCalled();
                 expect(success).not.toHaveBeenCalled();
 
@@ -356,7 +360,9 @@
                 expect(result).toBe(xhr);
                 expect(xhr.open).toHaveBeenCalledWith('DELETE', 'model/', true);
                 expect(xhr.send).toHaveBeenCalledWith(undefined);
-                expect(xhr.setRequestHeader).not.toHaveBeenCalled();
+                expect(xhr.setRequestHeader).toHaveBeenCalledWith(
+                    'Content-Type',
+                    'application/x-www-form-urlencoded; charset=UTF-8');
 
                 loadData();
 
@@ -376,7 +382,9 @@
                 expect(result).toBe(xhr);
                 expect(xhr.open).toHaveBeenCalledWith('DELETE', 'model/', true);
                 expect(xhr.send).toHaveBeenCalledWith(undefined);
-                expect(xhr.setRequestHeader).not.toHaveBeenCalled();
+                expect(xhr.setRequestHeader).toHaveBeenCalledWith(
+                    'Content-Type',
+                    'application/x-www-form-urlencoded; charset=UTF-8');
 
                 loadData(500);
 
