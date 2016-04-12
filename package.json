@@ -1,17 +1,18 @@
 {
-  "name": "backbone.native",
-  "version": "1.0.0",
-  "description": "A tiny drop-in replacement for jQuery to allow Backbone to work.",
+  "name": "backbone.marionette.native",
+  "version": "0.0.0",
+  "description": "A tiny drop-in replacement for jQuery to allow Backbone.Marionette to work.",
   "main": "backbone.native.js",
   "directories": {
     "example": "examples"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/inkling/backbone.native.git"
+    "url": "git://github.com/juanca/backbone.marionette.native.git"
   },
   "keywords": [
     "backbone",
+    "marionette",
     "jquery",
     "native"
   ],
@@ -23,6 +24,10 @@
     {
       "name": "Drew Stokes",
       "email": "drew@drewstokes.com"
+    },
+    {
+      "name": "Juan Carlos Medina",
+      "email": "juanca.med@gmail.com"
     }
   ],
   "licenses": [{
@@ -30,6 +35,6 @@
     "url": "http://www.apache.org/licenses/LICENSE-2.0"
   }],
   "bugs": {
-    "url": "https://github.com/inkling/backbone.native/issues"
+    "url": "https://github.com/juanca/backbone.marionette.native/issues"
   }
 }
