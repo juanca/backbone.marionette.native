@@ -6,10 +6,7 @@
   "directories": {
     "example": "examples"
   },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/juanca/backbone.marionette.native.git"
-  },
+  "repository": { "type": "git", "url": "git://github.com/juanca/backbone.marionette.native.git" },
   "keywords": [
     "backbone",
     "marionette",
@@ -17,24 +14,12 @@
     "native"
   ],
   "contributors": [
-    {
-      "name": "Logan Smyth",
-      "email": "logan.f.smyth@gmail.com"
-    },
-    {
-      "name": "Drew Stokes",
-      "email": "drew@drewstokes.com"
-    },
-    {
-      "name": "Juan Carlos Medina",
-      "email": "juanca.med@gmail.com"
-    }
+    { "name": "Logan Smyth", "email": "logan.f.smyth@gmail.com" },
+    { "name": "Drew Stokes", "email": "drew@drewstokes.com" },
+    { "name": "Juan Carlos Medina", "email": "juanca.med@gmail.com" }
   ],
-  "licenses": [{
-    "type": "Apache-2.0",
-    "url": "http://www.apache.org/licenses/LICENSE-2.0"
-  }],
-  "bugs": {
-    "url": "https://github.com/juanca/backbone.marionette.native/issues"
-  }
+  "licenses": [
+    { "type": "Apache-2.0", "url": "http://www.apache.org/licenses/LICENSE-2.0" }
+  ],
+  "bugs": { "url": "https://github.com/juanca/backbone.marionette.native/issues" }
 }

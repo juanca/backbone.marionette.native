@@ -2,7 +2,7 @@
 
 ## Renaming and re-wording
 
-- [ ] package.json
+- [x] package.json
 - [ ] README.md
 - [ ] New license?
 
