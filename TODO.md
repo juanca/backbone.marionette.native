@@ -24,4 +24,5 @@
 
 ## Backbone.Marionette.$
 
+- [ ] Update `package.json#main`
 - [ ] [Assess jQuery dependencies in Backbone.Marionette](https://github.com/marionettejs/backbone.marionette/issues/980#issuecomment-51868548)
