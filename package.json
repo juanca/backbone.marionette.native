@@ -18,8 +18,6 @@
     { "name": "Drew Stokes", "email": "drew@drewstokes.com" },
     { "name": "Juan Carlos Medina", "email": "juanca.med@gmail.com" }
   ],
-  "licenses": [
-    { "type": "Apache-2.0", "url": "http://www.apache.org/licenses/LICENSE-2.0" }
-  ],
-  "bugs": { "url": "https://github.com/juanca/backbone.marionette.native/issues" }
+  "license": "Apache-2.0",
+  "bugs": { "url": "https://github.com/juanca/backbone.marionette.native/issues" },
 }
