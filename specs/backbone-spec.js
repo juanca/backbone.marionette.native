@@ -1,3 +1,5 @@
+Backbone = require('backbone');
+
 /**
  * Tests for Backbone to ensure that it works as expected when depending on Backbone.Native.
  */
@@ -11,6 +13,7 @@
 
         beforeEach(function(){
             stable = ('$' in Backbone);
+            Backbone.Native = require('../backbone.native.entry.js');
 
             if (stable){
                 Backbone.$ = Backbone.Native;
@@ -123,15 +126,15 @@
 
                 expect(view1.clickEvt_).toHaveBeenCalled();
                 expect(view2.clickEvt_).toHaveBeenCalled();
-                view1.clickEvt_.reset();
-                view2.clickEvt_.reset();
+                view1.clickEvt_.calls.reset();
+                view2.clickEvt_.calls.reset();
                 view1.undelegateEvents();
 
                 this.createAndFireEvent(name, 'click');
 
                 expect(view1.clickEvt_).not.toHaveBeenCalled();
                 expect(view2.clickEvt_).toHaveBeenCalled();
-                view2.clickEvt_.reset();
+                view2.clickEvt_.calls.reset();
                 view2.undelegateEvents();
                 view1.delegateEvents();
 
@@ -139,7 +142,7 @@
 
                 expect(view1.clickEvt_).toHaveBeenCalled();
                 expect(view2.clickEvt_).not.toHaveBeenCalled();
-                view1.clickEvt_.reset();
+                view1.clickEvt_.calls.reset();
                 view1.undelegateEvents();
                 view2.undelegateEvents();
 
@@ -173,15 +176,15 @@
 
                 expect(view1.clickEvt_).toHaveBeenCalled();
                 expect(view2.clickEvt_).toHaveBeenCalled();
-                view1.clickEvt_.reset();
-                view2.clickEvt_.reset();
+                view1.clickEvt_.calls.reset();
+                view2.clickEvt_.calls.reset();
                 view1.undelegateEvents();
 
                 this.createAndFireEvent(name, 'click');
 
                 expect(view1.clickEvt_).not.toHaveBeenCalled();
                 expect(view2.clickEvt_).toHaveBeenCalled();
-                view2.clickEvt_.reset();
+                view2.clickEvt_.calls.reset();
                 view2.undelegateEvents();
                 view1.delegateEvents();
 
@@ -189,7 +192,7 @@
 
                 expect(view1.clickEvt_).toHaveBeenCalled();
                 expect(view2.clickEvt_).not.toHaveBeenCalled();
-                view1.clickEvt_.reset();
+                view1.clickEvt_.calls.reset();
                 view1.undelegateEvents();
                 view2.undelegateEvents();
 
@@ -226,7 +229,7 @@
                     'send',
                     'setRequestHeader'
                 ]);
-                spyOn(window, 'XMLHttpRequest').andReturn(xhr);
+                spyOn(window, 'XMLHttpRequest').and.returnValue(xhr);
                 success = jasmine.createSpy('success');
                 error = jasmine.createSpy('error');
 
@@ -407,7 +410,7 @@
                     hashChange: true,
                     silent: true
                 };
-                spyOn(history, 'getFragment').andReturn('');
+                spyOn(history, 'getFragment').and.returnValue('');
                 history.history = jasmine.createSpyObj('History', [
                     'pushState'
                 ]);
@@ -428,13 +431,13 @@
 
             it('should add and remove state listeners', function(){
                 history.start();
-                history.getFragment.andReturn('path/route/');
+                history.getFragment.and.returnValue('path/route/');
 
                 this.createAndFireEvent(window, 'popstate');
 
                 expect(route).toHaveBeenCalledWith('path/route/');
-                route.reset();
-                history.getFragment.andReturn('path/route/nextpage');
+                route.calls.reset();
+                history.getFragment.and.returnValue('path/route/nextpage');
 
                 history.stop();
                 this.createAndFireEvent(window, 'popstate');
@@ -445,13 +448,13 @@
             it('should add and remove hashchange listeners', function(){
                 history.options.pushState = false;
                 history.start();
-                history.getFragment.andReturn('path/route/');
+                history.getFragment.and.returnValue('path/route/');
 
                 this.createAndFireEvent(window, 'hashchange');
 
                 expect(route).toHaveBeenCalledWith('path/route/');
-                route.reset();
-                history.getFragment.andReturn('path/route/nextpage');
+                route.calls.reset();
+                history.getFragment.and.returnValue('path/route/nextpage');
 
                 history.stop();
                 this.createAndFireEvent(window, 'hashchange');

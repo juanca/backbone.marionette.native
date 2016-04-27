@@ -1,6 +1,9 @@
+Native = require('../backbone.native.entry.js');
+
 /**
  * Unit tests for the behavior of Backbone.Native without relying on Backbone.
  */
+
 describe('Backbone.Native', function(){
     "use strict";
 
@@ -26,7 +29,7 @@ describe('Backbone.Native', function(){
         threeSpy = jasmine.createSpy('three');
 
         orig$ = window.$;
-        $ = origBackboneNative = window.Backbone.Native;
+        $ = origBackboneNative = Native;
     });
 
     afterEach(function(){
@@ -42,7 +45,7 @@ describe('Backbone.Native', function(){
             evt = this.createAndFireEvent(two, 'click');
 
             expect(oneSpy).toHaveBeenCalledWith(evt, one);
-            oneSpy.reset();
+            oneSpy.calls.reset();
 
             $(one).off('click', oneSpy);
 
@@ -57,7 +60,7 @@ describe('Backbone.Native', function(){
             evt = this.createAndFireEvent(two, 'click');
 
             expect(twoSpy).toHaveBeenCalledWith(evt, two);
-            twoSpy.reset();
+            twoSpy.calls.reset();
 
             $(one).off('click', '.two', twoSpy);
 
@@ -69,7 +72,7 @@ describe('Backbone.Native', function(){
         it('should stop propagation', function(){
             $(one).on('click', oneSpy);
             $(two).on('click', twoSpy);
-            twoSpy.andCallFake(function(evt){
+            twoSpy.and.callFake(function(evt){
                 evt.stopPropagation();
             });
 
@@ -79,7 +82,7 @@ describe('Backbone.Native', function(){
             expect(twoSpy).toHaveBeenCalledWith(evt, two);
             expect(oneSpy).not.toHaveBeenCalled();
             $(two).off('click', twoSpy);
-            twoSpy.reset();
+            twoSpy.calls.reset();
 
             evt = this.createAndFireEvent(two, 'click');
 
@@ -90,7 +93,7 @@ describe('Backbone.Native', function(){
 
         it('should prevent default', function(){
             $(one).on('click', oneSpy);
-            oneSpy.andCallFake(function(evt){
+            oneSpy.and.callFake(function(evt){
                 evt.preventDefault();
             });
 
@@ -103,7 +106,7 @@ describe('Backbone.Native', function(){
         it('should stop propagation and default with false', function(){
             $(one).on('click', oneSpy);
             $(two).on('click', twoSpy);
-            twoSpy.andCallFake(function(){
+            twoSpy.and.callFake(function(){
                 return false;
             });
 
@@ -118,7 +121,7 @@ describe('Backbone.Native', function(){
         it('should stop propagation and default with false when delegated', function(){
             $(one).on('click', '.two', twoSpy);
             $(two).on('click', '.three', threeSpy);
-            threeSpy.andCallFake(function(){
+            threeSpy.and.callFake(function(){
                 return false;
             });
 
@@ -140,9 +143,9 @@ describe('Backbone.Native', function(){
             expect(oneSpy).toHaveBeenCalledWith(evt, one);
             expect(twoSpy).toHaveBeenCalledWith(evt, one);
             expect(threeSpy).toHaveBeenCalledWith(evt, one);
-            oneSpy.reset();
-            twoSpy.reset();
-            threeSpy.reset();
+            oneSpy.calls.reset();
+            twoSpy.calls.reset();
+            threeSpy.calls.reset();
 
             $(one).off('.name');
 
@@ -162,10 +165,10 @@ describe('Backbone.Native', function(){
             evt = this.createAndFireEvent(one, 'mousedown');
             evt = this.createAndFireEvent(one, 'mouseup');
 
-            expect(oneSpy.callCount).toBe(2);
-            expect(twoSpy.callCount).toBe(2);
-            oneSpy.reset();
-            twoSpy.reset();
+            expect(oneSpy.calls.count()).toBe(2);
+            expect(twoSpy.calls.count()).toBe(2);
+            oneSpy.calls.reset();
+            twoSpy.calls.reset();
 
             $(one).off(null, oneSpy);
 
@@ -173,7 +176,7 @@ describe('Backbone.Native', function(){
             evt = this.createAndFireEvent(one, 'mouseup');
 
             expect(oneSpy).not.toHaveBeenCalled();
-            expect(twoSpy.callCount).toBe(2);
+            expect(twoSpy.calls.count()).toBe(2);
         });
 
         it('should unbind events by type', function(){
@@ -187,9 +190,9 @@ describe('Backbone.Native', function(){
             expect(oneSpy).toHaveBeenCalled();
             expect(twoSpy).toHaveBeenCalled();
             expect(threeSpy).toHaveBeenCalled();
-            oneSpy.reset();
-            twoSpy.reset();
-            threeSpy.reset();
+            oneSpy.calls.reset();
+            twoSpy.calls.reset();
+            threeSpy.calls.reset();
 
             $(one).off('click');
 
@@ -331,7 +334,7 @@ describe('Backbone.Native', function(){
             evt = this.createAndFireEvent(one, 'click');
 
             expect(oneSpy).toHaveBeenCalledWith(evt, one);
-            oneSpy.reset();
+            oneSpy.calls.reset();
 
             $(one).off('click', oneSpy);
 
@@ -346,7 +349,7 @@ describe('Backbone.Native', function(){
             evt = this.createAndFireEvent(one, 'click');
 
             expect(oneSpy).toHaveBeenCalledWith(evt, one);
-            oneSpy.reset();
+            oneSpy.calls.reset();
 
             $(one).unbind('click', oneSpy);
 
@@ -361,7 +364,7 @@ describe('Backbone.Native', function(){
             evt = this.createAndFireEvent(three, 'click');
 
             expect(oneSpy).toHaveBeenCalledWith(evt, two);
-            oneSpy.reset();
+            oneSpy.calls.reset();
 
             $(one).undelegate('.two', 'click', oneSpy);
 
@@ -383,7 +386,7 @@ describe('Backbone.Native', function(){
                 xhr.status = 200;
                 xhr.statusText = 'OK';
 
-                spyOn(window, 'XMLHttpRequest').andReturn(xhr);
+                spyOn(window, 'XMLHttpRequest').and.returnValue(xhr);
 
                 data = {
                     page: 3,
@@ -654,8 +657,8 @@ describe('Backbone.Native', function(){
                 expect(error).not.toHaveBeenCalled();
 
                 for (var i = 200; i < 300; i++){
-                    success.reset();
-                    error.reset();
+                    success.calls.reset();
+                    error.calls.reset();
                     xhr.status = i;
 
                     xhr.onload();
@@ -713,8 +716,8 @@ describe('Backbone.Native', function(){
                 expect(error).not.toHaveBeenCalled();
 
                 [400, 404, 500].forEach(function(status){
-                    success.reset();
-                    error.reset();
+                    success.calls.reset();
+                    error.calls.reset();
 
                     xhr.status = status;
 

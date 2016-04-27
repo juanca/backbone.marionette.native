@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "description": "A tiny drop-in replacement for jQuery to allow Backbone.Marionette to work.",
   "main": "backbone.native.js",
+  "scripts": {
+    "test": "karma start"
+  },
   "directories": {
     "example": "examples"
   },
@@ -22,5 +25,15 @@
   "bugs": { "url": "https://github.com/juanca/backbone.marionette.native/issues" },
   "dependencies": {
     "webpack": "^1.12.15"
+  },
+  "devDependencies": {
+    "backbone": "^1.0.0",
+    "jasmine-core": "^2.4.1",
+    "jquery": "^2.2.1",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^0.2.2",
+    "karma-jasmine": "^0.3.7",
+    "karma-webpack": "^1.7.0",
+    "underscore": "^1.8.3"
   }
 }

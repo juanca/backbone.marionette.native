@@ -1,20 +1,37 @@
+_ = require('underscore');
 
 beforeEach(function(){
     this.element = document.createElement('div');
     this.element.classList.add('test-element');
     document.body.appendChild(this.element);
 
-    this.addMatchers({
-        toHaveClass: function(){
-            return _.every(arguments, function(c){
-                return this.actual.classList.contains(c);
-            }, this);
+    jasmine.addMatchers({
+        toHaveClass: function(util, customMatchers){
+            return {
+                compare: function(actual, expected) {
+                    return {
+                        pass: actual.classList.contains(expected)
+                    };
+                }
+            };
         },
-        toHaveText: function(text){
-            return this.actual.textContent.trim() === text;
+        toHaveText: function(util, customMatchers){
+            return {
+                compare: function(actual, expected) {
+                    return {
+                        pass: actual.textContent.trim() === expected
+                    };
+                }
+            };
         },
-        toBeInstanceOf: function(constructor){
-            return this.actual instanceof constructor;
+        toBeInstanceOf: function(util, customMatchers){
+            return {
+                compare: function(actual, expected) {
+                    return {
+                        pass: actual instanceof expected
+                    };
+                }
+            };
         }
     });
 
@@ -51,8 +68,8 @@ beforeEach(function(){
             );
         }
 
-        spyOn(evt, 'preventDefault').andCallThrough();
-        spyOn(evt, 'stopPropagation').andCallThrough();
+        spyOn(evt, 'preventDefault').and.callThrough();
+        spyOn(evt, 'stopPropagation').and.callThrough();
 
         element.dispatchEvent(evt);
 
