@@ -9,11 +9,11 @@ module.exports = function(config) {
 
     files: [
       './specs/helpers.js',
-      './specs/*.js'
+      './specs/**/*.js'
     ],
 
     preprocessors: {
-      './specs/*.js': ['webpack']
+      './specs/**/*.js': ['webpack']
     },
 
     webpack: webpackConfig,
