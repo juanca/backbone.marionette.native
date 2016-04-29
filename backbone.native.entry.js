@@ -51,10 +51,6 @@
     var handlers = {};
     var unusedKeys = [];
 
-    var handlersFor = require('./lib/jquery-interface/helpers/handlers-for.js')(cacheKeyProp, id, handlers, unusedKeys);
-
-    var clearHandlers = require('./lib/jquery-interface/helpers/clear-handlers.js')(cacheKeyProp, id, handlers, unusedKeys);
-
     var on = require('./lib/jquery-interface/helpers/on.js')(cacheKeyProp, id, handlers, unusedKeys);
 
     var off = require('./lib/jquery-interface/helpers/off.js')(cacheKeyProp, id, handlers, unusedKeys);
