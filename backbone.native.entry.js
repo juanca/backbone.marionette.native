@@ -66,7 +66,6 @@
     if (typeof exports !== 'undefined') {
       module.exports = $;
     } else {
-      console.log('setting as root');
       var root = this;
       var originalBackboneNative = root.Backbone ? root.Backbone.Native : null;
       var original$ = root.$;
