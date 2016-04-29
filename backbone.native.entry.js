@@ -43,8 +43,6 @@
 (function(){
     "use strict";
 
-    var namespaceRE = require('./lib/jquery-interface/helpers/namespace-regular-expression.js');
-
     // The element property to save the cache key on.
     var cacheKeyProp = 'backboneNativeKey' + Math.random();
     var id = 1;
