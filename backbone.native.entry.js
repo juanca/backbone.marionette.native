@@ -43,8 +43,7 @@
 (function(){
     "use strict";
 
-    // Regular expression to match an event name and/or a namespace.
-    var namespaceRE = /^([^.]+)?(?:\.([^.]+))?$/;
+    var namespaceRE = require('./lib/jquery-interface/helpers/namespace-regular-expression.js');
 
     var matchesSelector = Element.prototype.matchesSelector || null;
     if (!matchesSelector){
