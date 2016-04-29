@@ -61,19 +61,7 @@
 
     var handlersFor = require('./lib/jquery-interface/helpers/handlers-for.js')(cacheKeyProp, id, handlers, unusedKeys);
 
-    /**
-     * Clear the event handlers for a given element.
-     *
-     * @param {Element} el The element to clear.
-     */
-    function clearHandlers(el){
-        var cacheKey = el[cacheKeyProp];
-        if (handlers[cacheKey]){
-            handlers[cacheKey] = null;
-            el[cacheKeyProp] = null;
-            unusedKeys.push(cacheKey);
-        }
-    }
+    var clearHandlers = require('./lib/jquery-interface/helpers/clear-handlers.js')(cacheKeyProp, id, handlers, unusedKeys);
 
     /**
      * Add event handlers to an element.
