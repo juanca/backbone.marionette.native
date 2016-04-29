@@ -269,21 +269,7 @@
         find: null,
 
         attr: require('./lib/jquery-interface/attr.js'),
-
-        /**
-         * Set the HTML content of the element. Backbone does not use the no-argument version
-         * to read innerHTML, so that has not been implemented.
-         *
-         * Used in Backbone.View.prototype.make.
-         *
-         * @param {string} html The HTML to set as the element content.
-         *
-         * @return {$} This instance.
-         */
-        html: function(html){
-            this[0].innerHTML = html;
-            return this;
-        },
+        html: require('./lib/jquery-interface/html.js'),
 
         /**
          * Remove an element from the DOM and remove all event handlers bound to it and

@@ -258,15 +258,6 @@ describe('Backbone.Native', function(){
             expect(inst[0]).toBe(window);
         });
 
-        it('should set HTML content', function(){
-            $(two).html('<div id="random">New Content</div>');
-
-            expect(two.childNodes.length).toBe(1);
-            var el = two.childNodes[0];
-            expect(el.id).toBe('random');
-            expect(el).toHaveText('New Content');
-        });
-
         it('should remove recursively', function(){
             $(one).on('click', oneSpy);
             $(two).on('click', twoSpy);
