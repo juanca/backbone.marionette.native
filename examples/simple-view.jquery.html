@@ -1,0 +1,52 @@
+<html>
+<head>
+  <title>Backbone.Native jQuery Example</title>
+  <script type='text/javascript' src='../node_modules/underscore/underscore.js'></script>
+  <script type='text/javascript' src='../node_modules/jquery/dist/jquery.js'></script>
+  <script type='text/javascript' src='../node_modules/backbone/backbone.js'></script>
+
+  <style type='text/css'>
+    .view {
+      border: 1px solid black;
+    }
+
+    .child.clicked {
+      background: peru;
+    }
+
+    .child:nth-child(1) {
+      border: 1px solid red;
+    }
+
+    .child:nth-child(2) {
+      border: 1px solid green;
+    }
+
+    .child:nth-child(3) {
+      border: 1px solid blue;
+    }
+  </style>
+</head>
+<body>
+  <div class='view'>
+    <div class='child'>First</div>
+    <div class='child'>Second</div>
+    <div class='child'>Third</div>
+  </div>
+
+  <script type='text/javascript'>
+    View = Backbone.View.extend({
+      events: {
+          'click .child': 'clickChildEvent'
+      },
+
+      clickChildEvent: function(event){
+        $(event.currentTarget).toggleClass('clicked');
+      }
+    });
+
+    var view = new View({ el: '.view' });
+    view.render();
+  </script>
+</body>
+</html>

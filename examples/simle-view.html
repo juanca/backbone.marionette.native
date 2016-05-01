@@ -1,0 +1,62 @@
+<html>
+<head>
+  <title>Backbone.Native Example</title>
+  <script type='text/javascript' src='../node_modules/underscore/underscore.js'></script>
+  <script type='text/javascript' src='../node_modules/backbone/backbone.js'></script>
+  <script type='text/javascript' src='../backbone.native.js'></script>
+
+  <style type='text/css'>
+    .view {
+      border: 1px solid black;
+    }
+
+    .child.clicked {
+      background: peru;
+    }
+
+    .child:nth-child(1) {
+      border: 1px solid red;
+    }
+
+    .child:nth-child(2) {
+      border: 1px solid green;
+    }
+
+    .child:nth-child(3) {
+      border: 1px solid blue;
+    }
+  </style>
+
+  <script type='text/javascript'>
+    var stable = ('$' in Backbone);
+
+    if (stable){
+      Backbone.$ = Backbone.Native;
+    } else {
+      Backbone.setDomLibrary(Backbone.Native);
+    }
+  </script>
+</head>
+<body>
+  <div class='view'>
+    <div class='child'>First</div>
+    <div class='child'>Second</div>
+    <div class='child'>Third</div>
+  </div>
+
+  <script type='text/javascript'>
+    var View = Backbone.View.extend({
+      events: {
+        'click .child': 'clickChildEvent'
+      },
+
+      clickChildEvent: function(event, childElement){
+        childElement.classList.toggle('clicked');
+      }
+    });
+
+    var view = new View({ el: '.view' });
+    view.render();
+  </script>
+</body>
+</html>
