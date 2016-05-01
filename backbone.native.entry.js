@@ -7,15 +7,9 @@
   var handlers = {};
   var unusedKeys = [];
 
-  var on = require('./lib/jquery-interface/helpers/on.js')(cacheKeyProp, id, handlers, unusedKeys);
-  var off = require('./lib/jquery-interface/helpers/off.js')(cacheKeyProp, id, handlers, unusedKeys);
-  var $ = require('./lib/$.js')(on, off, cacheKeyProp, id, handlers, unusedKeys);
+  var $ = require('./lib/$.js')(cacheKeyProp, id, handlers, unusedKeys);
 
   $.ajax = require('./lib/ajax.js');
-
-  // Expose on/off for external use with having to instantiate a wrapper.
-  $.on = on;
-  $.off = off;
 
   if (typeof exports !== 'undefined') {
     module.exports = $;
