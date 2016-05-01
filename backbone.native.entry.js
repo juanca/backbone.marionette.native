@@ -1,13 +1,7 @@
 (function(){
   "use strict";
 
-  // The element property to save the cache key on.
-  var cacheKeyProp = 'backboneNativeKey' + Math.random();
-  var id = 1;
-  var handlers = {};
-  var unusedKeys = [];
-
-  var $ = require('./lib/$.js')(cacheKeyProp, id, handlers, unusedKeys);
+  var $ = require('./lib/$.js');
 
   $.ajax = require('./lib/ajax.js');
 
