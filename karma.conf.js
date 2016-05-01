@@ -5,7 +5,7 @@ webpackConfig.plugins = [];
 module.exports = function(config) {
   config.set({
     frameworks: ['jasmine'],
-    browsers: ['Chrome'],
+    browsers: ['Chrome', 'PhantomJS'],
 
     files: [
       './specs/helpers.js',
