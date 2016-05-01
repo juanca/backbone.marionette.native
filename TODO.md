@@ -4,25 +4,26 @@
 
 - [x] package.json
 - [ ] README.md
-- [ ] New license?
+- [x] New license?
 
 ## NPM
 
-- [ ] package.json dependencies
-  - [ ] underscore
-  - [ ] Jasmine
-  - [ ] Backbone
+- [x] package.json dependencies
+  - [x] underscore
+  - [x] Jasmine
+  - [x] Backbone
 
 - [ ] Backport / backward-compatability?
 
-- [ ] Split library into multiple files for dev sanity
-- [ ] Split specs and helpers into multiple files for dev sanity
+- [x] Split library into multiple files for dev sanity
+- [x] Split specs and helpers into multiple files for dev sanity
 
 ## CI
 
-- [ ] Set up CI
+- [x] Set up CI
 
 ## Backbone.Marionette.$
 
 - [ ] Update `package.json#main`
 - [ ] [Assess jQuery dependencies in Backbone.Marionette](https://github.com/marionettejs/backbone.marionette/issues/980#issuecomment-51868548)
+- [ ] Update README.md
