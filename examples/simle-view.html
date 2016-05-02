@@ -38,16 +38,33 @@
   </script>
 </head>
 <body>
-  <div class='view'>
-    <div class='child'>First</div>
-    <div class='child'>Second</div>
-    <div class='child'>Third</div>
+  <div class='example'>
   </div>
 
   <script type='text/javascript'>
     var View = Backbone.View.extend({
+      attributes: {
+        id: 'some-id',
+        greeting: 'hello',
+        context: 'world'
+      },
+
+      className: 'view',
+
+      template: _.template('' +
+        "<div class='child'>First</div>" +
+        "<div class='child'>Second</div>" +
+        "<div class='child'>Third</div>" +
+      ''),
+
       events: {
         'click .child': 'clickChildEvent'
+      },
+
+      render: function() {
+        this.$el.html(this.template());
+
+        return Backbone.View.prototype.render.call(this);
       },
 
       clickChildEvent: function(event, childElement){
@@ -55,8 +72,8 @@
       }
     });
 
-    var view = new View({ el: '.view' });
-    view.render();
+    var view = new View();
+    document.querySelector('.example').appendChild(view.render().el);
   </script>
 </body>
 </html>
