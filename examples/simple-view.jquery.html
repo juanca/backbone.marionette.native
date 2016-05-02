@@ -49,12 +49,15 @@
         "<div class='child'>Third</div>" +
       ''),
 
+      events: {
+        'click .child': 'clickChildEvent'
+      },
+
       render: function() {
         this.$el.html(this.template());
 
         return Backbone.View.prototype.render.call(this);
       },
-
 
       clickChildEvent: function(event){
         $(event.currentTarget).toggleClass('clicked');
