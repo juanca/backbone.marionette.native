@@ -30,6 +30,7 @@
   },
   "devDependencies": {
     "backbone": "^1.0.0",
+    "backbone.marionette": "^2.4.5",
     "jasmine-core": "^2.4.1",
     "jquery": "^2.2.1",
     "karma": "^0.13.22",
