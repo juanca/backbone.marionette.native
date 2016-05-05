@@ -33,5 +33,4 @@
 - [ ] Ajax https://github.com/akre54/Backbone.NativeAjax/blob/master/backbone.nativeajax.js
 - [ ] View https://github.com/akre54/Backbone.NativeView
 - [ ] Full shebang https://github.com/paulmillr/exoskeleton
-- 
 
