@@ -110,14 +110,65 @@ describe('Backbone.Native Deferred', function(){
       itRunsAlways();
       itRunsDoneOnResolve();
       itRunsFailOnReject();
+
+      describe('multiple promises', function() {
+        beforeEach(function() {
+          var deferred1 = Deferred();
+          deferred1.always(spyOne);
+
+          var deferred2 = Deferred();
+          deferred2.always(spyTwo);
+
+          deferred1.resolve(1, 2, 3);
+        });
+
+        it('isolates internal state', function() {
+          expect(spyOne).toHaveBeenCalled();
+          expect(spyTwo).not.toHaveBeenCalled();
+        });
+      });
     });
 
     describe('done', function() {
       itRunsDoneOnResolve();
+
+      describe('multiple promises', function() {
+        beforeEach(function() {
+          var deferred1 = Deferred();
+          deferred1.done(spyOne);
+
+          var deferred2 = Deferred();
+          deferred2.done(spyTwo);
+
+          deferred1.resolve(1, 2, 3);
+        });
+
+        it('isolates internal state', function() {
+          expect(spyOne).toHaveBeenCalled();
+          expect(spyTwo).not.toHaveBeenCalled();
+        });
+      });
     });
 
     describe('fail', function() {
       itRunsFailOnReject();
+
+      describe('multiple promises', function() {
+        beforeEach(function() {
+          var deferred1 = Deferred();
+          deferred1.fail(spyOne);
+
+          var deferred2 = Deferred();
+          deferred2.fail(spyTwo);
+
+          deferred1.reject(1, 2, 3);
+        });
+
+        it('isolates internal state', function() {
+          expect(spyOne).toHaveBeenCalled();
+          expect(spyTwo).not.toHaveBeenCalled();
+        });
+      });
     });
   });
 });
