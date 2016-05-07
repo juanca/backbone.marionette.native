@@ -4,10 +4,13 @@ module.exports = {
   entry: {
     dist: './backbone.native.entry.js',
   },
+  externals: {
+    backbone: 'Backbone'
+  },
   output: {
     path: __dirname,
     filename: 'backbone.native.js',
-    libraryTarget: 'var',
-    library: ['Backbone', 'Native'],
+    libraryTarget: 'window',
+    library: 'jQuery',
   },
 };

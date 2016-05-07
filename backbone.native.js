@@ -1,4 +1,4 @@
-var Backbone = Backbone || {}; Backbone["Native"] =
+window["jQuery"] =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -51,6 +51,16 @@ var Backbone = Backbone || {}; Backbone["Native"] =
 	  var $ = __webpack_require__(1);
 
 	  $.ajax = __webpack_require__(10);
+	  $.Deferred = __webpack_require__(11);
+
+	  Backbone = __webpack_require__(12);
+	  var stable = ('$' in Backbone);
+
+	  if (stable){
+	    Backbone.$ = $;
+	  } else {
+	    Backbone.setDomLibrary($);
+	  }
 
 	  module.exports = $;
 	}).call(this);
@@ -543,6 +553,84 @@ var Backbone = Backbone || {}; Backbone["Native"] =
 
 	  return xhr;
 	};
+
+/***/ },
+/* 11 */
+/***/ function(module, exports) {
+
+	/**
+	 * Deferred
+	 *
+	 * @param {Object} options
+	 */
+	module.exports = function(options){
+	  options = options || {};
+
+	  var alwaysCallbacks = [];
+	  var doneCallbacks = [];
+	  var failCallbacks = [];
+
+	  function Deferred() {
+	    return this;
+	  }
+
+	  Deferred.prototype.always = function always(callback) {
+	    alwaysCallbacks.push(callback);
+
+	    return this;
+	  };
+
+	  Deferred.prototype.done = function done(callback) {
+	    doneCallbacks.push(callback);
+
+	    return this;
+	  };
+
+	  Deferred.prototype.fail = function fail(callback) {
+	    failCallbacks.push(callback);
+
+	    return this;
+	  };
+
+	  Deferred.prototype.resolve = function resolve() {
+	    var actualParameters = arguments;
+
+	    doneCallbacks.forEach(function(callback) {
+	      callback.apply(null, actualParameters);
+	    });
+
+	    alwaysCallbacks.forEach(function(callback) {
+	      callback.apply(null, actualParameters);
+	    });
+
+	    doneCallbacks = [];
+	    alwaysCallbacks = [];
+	  };
+
+	  Deferred.prototype.reject = function resolve() {
+	    var actualParameters = arguments;
+
+	    failCallbacks.forEach(function(callback) {
+	      callback.apply(null, actualParameters);
+	    });
+
+	    alwaysCallbacks.forEach(function(callback) {
+	      callback.apply(null, actualParameters);
+	    });
+
+	    failCallbacks = [];
+	    alwaysCallbacks = [];
+	  };
+
+	  return new Deferred();
+	};
+
+
+/***/ },
+/* 12 */
+/***/ function(module, exports) {
+
+	(function() { module.exports = window["Backbone"]; }());
 
 /***/ }
 /******/ ]);
