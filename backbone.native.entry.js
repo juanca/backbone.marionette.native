@@ -1,9 +1,8 @@
 (function(){
   "use strict";
   var $ = require('./lib/$.js');
-  var stable = ('$' in Backbone);
 
-  if (stable){
+  if ('$' in Backbone) {
     Backbone.$ = $;
   } else {
     Backbone.setDomLibrary($);

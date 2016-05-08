@@ -1,5 +1,6 @@
 webpackConfig = require('./webpack.config.js');
 webpackConfig.entry = {};
+webpackConfig.externals = {};
 webpackConfig.plugins = [];
 
 module.exports = function(config) {

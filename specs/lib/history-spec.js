@@ -1,21 +1,12 @@
 Backbone = require('backbone');
+Backbone.Native = require('../../backbone.native.entry.js');
 
 describe('Backbone.History', function(){
   "use strict";
 
-  var stable, history, route;
+  var history, route;
 
   beforeEach(function(){
-    stable = ('$' in Backbone);
-
-    Backbone.Native = require('../../backbone.native.entry.js');
-
-    if (stable){
-      Backbone.$ = Backbone.Native;
-    } else {
-      Backbone.setDomLibrary(Backbone.Native);
-    }
-
     history = new Backbone.History()
     history.options = {
       pushState: true,

@@ -1,9 +1,10 @@
 Backbone = require('backbone');
+Backbone.Native = require('../../backbone.native.entry.js');
 
 describe('Backbone.Model', function(){
   "use strict";
 
-  var stable, model, xhr, success, error;
+  var model, xhr, success, error;
 
   function loadData(code, data){
     xhr.status = code || 200;
@@ -12,7 +13,7 @@ describe('Backbone.Model', function(){
   }
 
   function expectSuccess(){
-    if (stable){
+    if ('$' in Backbone){
       expect(success).toHaveBeenCalledWith(
         model, {id: 10, attr: 'responseVal'}, jasmine.any(Object));
     } else {
@@ -23,15 +24,6 @@ describe('Backbone.Model', function(){
   }
 
   beforeEach(function(){
-    stable = ('$' in Backbone);
-    Backbone.Native = require('../../backbone.native.entry.js');
-
-    if (stable){
-      Backbone.$ = Backbone.Native;
-    } else {
-      Backbone.setDomLibrary(Backbone.Native);
-    }
-
     xhr = jasmine.createSpyObj('XHR', [
       'open',
       'send',

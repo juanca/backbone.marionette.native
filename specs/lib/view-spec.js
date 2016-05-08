@@ -1,20 +1,12 @@
 Backbone = require('backbone');
+Backbone.Native = require('../../backbone.native.entry.js');
 
 describe('Backbone.View', function(){
   "use strict";
 
-  var stable, view;
+  var view;
 
   beforeEach(function(){
-    stable = ('$' in Backbone);
-    Backbone.Native = require('../../backbone.native.entry.js');
-
-    if (stable){
-      Backbone.$ = Backbone.Native;
-    } else {
-      Backbone.setDomLibrary(Backbone.Native);
-    }
-
     this.element.innerHTML = "<div class='root'></div>";
   });
 
