@@ -1,7 +1,5 @@
 (function(){
   "use strict";
-  Backbone = require('backbone');
-
   var $ = require('./lib/$.js');
   var stable = ('$' in Backbone);
 

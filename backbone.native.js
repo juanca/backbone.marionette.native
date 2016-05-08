@@ -45,15 +45,11 @@ window["jQuery"] =
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	(function(){
+	/* WEBPACK VAR INJECTION */(function(Backbone) {(function(){
 	  "use strict";
+	  // Backbone = require('backbone');
 
-	  var $ = __webpack_require__(1);
-
-	  $.ajax = __webpack_require__(10);
-	  $.Deferred = __webpack_require__(11);
-
-	  Backbone = __webpack_require__(12);
+	  var $ = __webpack_require__(2);
 	  var stable = ('$' in Backbone);
 
 	  if (stable){
@@ -65,9 +61,16 @@ window["jQuery"] =
 	  module.exports = $;
 	}).call(this);
 
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
 /* 1 */
+/***/ function(module, exports) {
+
+	(function() { module.exports = window["Backbone"]; }());
+
+/***/ },
+/* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -88,8 +91,8 @@ window["jQuery"] =
 	var handlers = {};
 	var unusedKeys = [];
 
-	var on = __webpack_require__(2)(cacheKeyProp, id, handlers, unusedKeys);
-	var off = __webpack_require__(5)(cacheKeyProp, id, handlers, unusedKeys);
+	var on = __webpack_require__(3)(cacheKeyProp, id, handlers, unusedKeys);
+	var off = __webpack_require__(6)(cacheKeyProp, id, handlers, unusedKeys);
 
 	function $(element, context){
 	  context = context || document;
@@ -147,9 +150,9 @@ window["jQuery"] =
 	   */
 	  find: null,
 
-	  attr: __webpack_require__(7),
-	  html: __webpack_require__(8),
-	  remove: __webpack_require__(9)(cacheKeyProp, id, handlers, unusedKeys),
+	  attr: __webpack_require__(8),
+	  html: __webpack_require__(9),
+	  remove: __webpack_require__(10)(cacheKeyProp, id, handlers, unusedKeys),
 
 	  /**
 	   * Bind an event handler to this element.
@@ -196,11 +199,14 @@ window["jQuery"] =
 	  },
 	};
 
+	$.ajax = __webpack_require__(11);
+	$.Deferred = __webpack_require__(12);
+
 	module.exports = $;
 
 
 /***/ },
-/* 2 */
+/* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -212,8 +218,8 @@ window["jQuery"] =
 	 * @param {function(Event, Element)} callback The function to call when the event is fired.
 	 */
 	module.exports = function(cacheKeyProp, id, handlers, unusedKeys){
-	  var namespaceRE = __webpack_require__(3);
-	  var handlersFor = __webpack_require__(4)(cacheKeyProp, id, handlers, unusedKeys);
+	  var namespaceRE = __webpack_require__(4);
+	  var handlersFor = __webpack_require__(5)(cacheKeyProp, id, handlers, unusedKeys);
 
 	  var matchesSelector = Element.prototype.matchesSelector || null;
 	  if (!matchesSelector){
@@ -282,7 +288,7 @@ window["jQuery"] =
 
 
 /***/ },
-/* 3 */
+/* 4 */
 /***/ function(module, exports) {
 
 	// Regular expression to match an event name and/or a namespace.
@@ -290,7 +296,7 @@ window["jQuery"] =
 
 
 /***/ },
-/* 4 */
+/* 5 */
 /***/ function(module, exports) {
 
 	/**
@@ -317,7 +323,7 @@ window["jQuery"] =
 
 
 /***/ },
-/* 5 */
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -329,9 +335,9 @@ window["jQuery"] =
 	 * @param {function(Event, Element)} callback (Optional) The function to unbind.
 	 */
 	module.exports = function(cacheKeyProp, id, handlers, unusedKeys){
-	  var namespaceRE = __webpack_require__(3);
-	  var handlersFor = __webpack_require__(4)(cacheKeyProp, id, handlers, unusedKeys);
-	  var clearHandlers = __webpack_require__(6)(cacheKeyProp, id, handlers, unusedKeys);
+	  var namespaceRE = __webpack_require__(4);
+	  var handlersFor = __webpack_require__(5)(cacheKeyProp, id, handlers, unusedKeys);
+	  var clearHandlers = __webpack_require__(7)(cacheKeyProp, id, handlers, unusedKeys);
 
 	  return function off(parentElement, eventName, selector, callback){
 	    if (typeof selector === 'function'){
@@ -371,7 +377,7 @@ window["jQuery"] =
 
 
 /***/ },
-/* 6 */
+/* 7 */
 /***/ function(module, exports) {
 
 	/**
@@ -392,7 +398,7 @@ window["jQuery"] =
 
 
 /***/ },
-/* 7 */
+/* 8 */
 /***/ function(module, exports) {
 
 	/**
@@ -427,7 +433,7 @@ window["jQuery"] =
 
 
 /***/ },
-/* 8 */
+/* 9 */
 /***/ function(module, exports) {
 
 	/**
@@ -448,7 +454,7 @@ window["jQuery"] =
 
 
 /***/ },
-/* 9 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -460,7 +466,7 @@ window["jQuery"] =
 	 * @return {$} This instance.
 	 */
 	module.exports = function(cacheKeyProp, id, handlers, unusedKeys){
-	  var off = __webpack_require__(5)(cacheKeyProp, id, handlers, unusedKeys);
+	  var off = __webpack_require__(6)(cacheKeyProp, id, handlers, unusedKeys);
 
 	  return function() {
 	    var el = this[0];
@@ -483,7 +489,7 @@ window["jQuery"] =
 
 
 /***/ },
-/* 10 */
+/* 11 */
 /***/ function(module, exports) {
 
 	/**
@@ -561,7 +567,7 @@ window["jQuery"] =
 	};
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports) {
 
 	/**
@@ -631,12 +637,6 @@ window["jQuery"] =
 	  return new Deferred();
 	};
 
-
-/***/ },
-/* 12 */
-/***/ function(module, exports) {
-
-	(function() { module.exports = window["Backbone"]; }());
 
 /***/ }
 /******/ ]);

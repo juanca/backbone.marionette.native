@@ -13,4 +13,9 @@ module.exports = {
     libraryTarget: 'window',
     library: 'jQuery',
   },
+  plugins: [
+    new webpack.ProvidePlugin({
+      Backbone: 'backbone'
+    }),
+  ],
 };
