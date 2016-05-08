@@ -1,6 +1,6 @@
-$ = require('../../../backbone.native.entry.js');
+$ = require('../../../lib/$.js');
 
-describe('Backbone.Native jQuery interface', function(){
+describe('Backbone.Native jQuery interface html', function(){
   "use strict";
 
   var evt, one, two, three;

@@ -1,4 +1,4 @@
-Deferred = require('../../backbone.native.entry.js').Deferred;
+Deferred = require('../../lib/$.js').Deferred;
 
 describe('Backbone.Native Deferred', function(){
   "use strict";

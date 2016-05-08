@@ -1,4 +1,4 @@
-$ = require('../../../backbone.native.entry.js');
+$ = require('../../../lib/$.js');
 
 describe('Backbone.Native jQuery interface attr', function(){
   "use strict";

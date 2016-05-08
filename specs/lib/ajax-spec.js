@@ -1,4 +1,4 @@
-$ = require('../../backbone.native.entry.js');
+$ = require('../../lib/$.js');
 
 describe('Backbone.Native ajax', function(){
   "use strict";
