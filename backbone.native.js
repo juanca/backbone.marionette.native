@@ -187,7 +187,13 @@ window["jQuery"] =
 	  },
 	  undelegate: function(selector, eventName, callback){
 	    return this.off(eventName, selector, callback);
-	  }
+	  },
+
+	  // Marionette support
+	  append: function(fragment) {
+	    this[0].appendChild(fragment);
+	    return this;
+	  },
 	};
 
 	module.exports = $;
