@@ -2,7 +2,7 @@
   "name": "backbone.marionette.native",
   "version": "0.0.0",
   "description": "A tiny drop-in replacement for jQuery to allow Backbone.Marionette to work.",
-  "main": "backbone.native.js",
+  "main": "backbone.marionette.native.js",
   "scripts": {
     "test": "karma start --single-run --browsers PhantomJS",
     "test:phantomjs": "karma start --browsers PhantomJS",

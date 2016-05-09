@@ -47,12 +47,9 @@ window["jQuery"] =
 
 	/* WEBPACK VAR INJECTION */(function(Backbone) {(function(){
 	  "use strict";
-	  // Backbone = require('backbone');
-
 	  var $ = __webpack_require__(2);
-	  var stable = ('$' in Backbone);
 
-	  if (stable){
+	  if ('$' in Backbone) {
 	    Backbone.$ = $;
 	  } else {
 	    Backbone.setDomLibrary($);

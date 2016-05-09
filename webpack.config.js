@@ -2,14 +2,14 @@ webpack = require('webpack');
 
 module.exports = {
   entry: {
-    dist: './backbone.native.entry.js',
+    dist: './backbone.marionette.native.entry.js',
   },
   externals: {
     backbone: 'Backbone'
   },
   output: {
     path: __dirname,
-    filename: 'backbone.native.js',
+    filename: 'backbone.marionette.native.js',
     libraryTarget: 'window',
     library: 'jQuery',
   },

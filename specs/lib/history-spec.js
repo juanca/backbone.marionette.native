@@ -1,5 +1,5 @@
 Backbone = require('backbone');
-Backbone.Native = require('../../backbone.native.entry.js');
+Backbone.Native = require('../../backbone.marionette.native.entry.js');
 
 describe('Backbone.History', function(){
   "use strict";
