@@ -1,0 +1,109 @@
+<html>
+<head>
+  <title>Backbone.Marionette.Native jQuery Example</title>
+  <script type='text/javascript' src='../node_modules/underscore/underscore.js'></script>
+  <script type='text/javascript' src='../node_modules/backbone/backbone.js'></script>
+  <script type='text/javascript' src='../backbone.marionette.native.js'></script>
+  <script type='text/javascript' src='../node_modules/backbone.marionette/lib/backbone.marionette.js'></script>
+
+  <style type='text/css'>
+    .view {
+      border: 1px solid black;
+    }
+
+    .child.clicked {
+      background: peru;
+    }
+
+    .child:nth-child(1) {
+      border: 1px solid red;
+    }
+
+    .child:nth-child(2) {
+      border: 1px solid green;
+    }
+
+    .child:nth-child(3) {
+      border: 1px solid blue;
+    }
+  </style>
+</head>
+<body>
+  <div class='example'>
+  </div>
+
+  <button class='benchmark'>Render a few times</button>
+
+  <script type='text/javascript'>
+    ItemView = Backbone.Marionette.ItemView.extend({
+      attributes: {
+        id: 'some-id',
+        greeting: 'hello',
+        context: 'world'
+      },
+
+      className: 'view',
+
+      template: _.template('' +
+        "<div class='child'>First</div>" +
+        "<div class='child'>Second</div>" +
+        "<div class='child'>Third</div>" +
+      ''),
+
+      events: {
+        'click .child': 'clickChildEvent'
+      },
+
+      clickChildEvent: function(event){
+        event.target.classList.toggle('clicked');
+      }
+    });
+
+    function initView() {
+      collection = new Backbone.Collection([
+        {},
+        {},
+        {}
+      ]);
+
+      CollectionView = Backbone.Marionette.CollectionView.extend({
+        childView: ItemView
+      });
+
+      view = new CollectionView({ collection: collection });
+      document.querySelector('.example').appendChild(view.render().el);
+    }
+
+    initView();
+
+    document.querySelector('.benchmark').addEventListener('click', function() {
+      console.log('rendering a few times');
+      view.destroy();
+
+      setTimeout(function() {
+        initView();
+
+        setTimeout(function() {
+          view.destroy();
+
+          setTimeout(function() {
+            initView();
+
+            setTimeout(function() {
+              view.destroy();
+
+              setTimeout(function() {
+                initView();
+
+                setTimeout(function() {
+                  view.destroy();
+                }, 100);
+              }, 50);
+            }, 100);
+          }, 50);
+        }, 100);
+      }, 50);
+    });
+  </script>
+</body>
+</html>
