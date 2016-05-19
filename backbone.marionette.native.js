@@ -197,7 +197,8 @@ window["jQuery"] =
 	};
 
 	$.ajax = __webpack_require__(11);
-	$.Deferred = __webpack_require__(12);
+	$.contains = __webpack_require__(12);
+	$.Deferred = __webpack_require__(13);
 
 	module.exports = $;
 
@@ -565,6 +566,21 @@ window["jQuery"] =
 
 /***/ },
 /* 12 */
+/***/ function(module, exports) {
+
+	module.exports = function(container, contained) {
+	  var parentNode = contained.parentNode;
+	  while(parentNode) {
+	    if (parentNode === container) return true;
+	    parentNode = parentNode.parentNode;
+	  }
+
+	  return false;
+	};
+
+
+/***/ },
+/* 13 */
 /***/ function(module, exports) {
 
 	/**
