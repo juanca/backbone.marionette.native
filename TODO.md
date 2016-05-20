@@ -27,3 +27,10 @@
 - [ ] Update `package.json#main`
 - [ ] [Assess jQuery dependencies in Backbone.Marionette](https://github.com/marionettejs/backbone.marionette/issues/980#issuecomment-51868548)
 - [ ] Update README.md
+
+## Possible dependencies and resources
+
+- [ ] Ajax https://github.com/akre54/Backbone.NativeAjax/blob/master/backbone.nativeajax.js
+- [ ] View https://github.com/akre54/Backbone.NativeView
+- [ ] Full shebang https://github.com/paulmillr/exoskeleton
+
