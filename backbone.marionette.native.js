@@ -92,10 +92,10 @@ window["jQuery"] =
 	var off = __webpack_require__(6)(cacheKeyProp, id, handlers, unusedKeys);
 
 	function $(element, context){
-	  context = context || document;
-
 	  // Call as a constructor if it was used as a function.
 	  if (!(this instanceof $)) return new $(element, context);
+
+	  context = context || document;
 
 	  if (!element){
 	    this.length = 0;
@@ -124,83 +124,29 @@ window["jQuery"] =
 	    this[0] = element;
 	    this.length = 1;
 	  }
-	};
+	}
 
 	$.prototype = {
-	  /**
-	   * The following methods are used by Backbone, but only in code-paths for IE 6/7 support.
-	   * Since none of this will work for old IE anyway, they are not implemented, and
-	   * instead left for documentation purposes.
-	   *
-	   * Used in Backbone.History.prototype.start.
-	   */
 	  hide: null,
 	  appendTo: null,
-
-	  /**
-	   * Find is not supported to encourage the use of querySelector(All) as an alternative.
-	   *
-	   * e.g.
-	   * Instead of 'this.$(sel)', use 'this.el.querySelectorAll(sel)'.
-	   *
-	   * Used in Backbone.View.prototype.$, but not actually called internally.
-	   */
 	  find: null,
-
 	  attr: __webpack_require__(8),
 	  contents: __webpack_require__(9),
 	  detach: __webpack_require__(10),
 	  html: __webpack_require__(11),
 	  remove: __webpack_require__(12)(cacheKeyProp, id, handlers, unusedKeys),
-
-	  /**
-	   * Bind an event handler to this element.
-	   *
-	   * @param {string} eventName The event to bind, e.g. 'click'.
-	   * @param {string} selector (Optional) The selector to match when an event propagates up.
-	   * @param {function(Event, Element)} callback The function to call when the event is fired.
-	   */
-	  on: function(eventName, selector, callback){
-	    on(this[0], eventName, selector, callback);
-	    return this;
-	  },
-
-	  /**
-	   * Unbind an event handler to this element.
-	   *
-	   * @param {string} eventName (Optional) The event to unbind, e.g. 'click'.
-	   * @param {string} selector (Optional) The selector to unbind.
-	   * @param {function(Event, Element)} callback (Optional) The function to unbind.
-	   */
-	  off: function(eventName, selector, callback){
-	    off(this[0], eventName, selector, callback);
-	    return this;
-	  },
-
-	  // Backbone v0.9.2 support.
-	  bind: function(eventName, callback){
-	    return this.on(eventName, callback);
-	  },
-	  unbind: function(eventName, callback){
-	    return this.off(eventName, callback);
-	  },
-	  delegate: function(selector, eventName, callback){
-	    return this.on(eventName, selector, callback);
-	  },
-	  undelegate: function(selector, eventName, callback){
-	    return this.off(eventName, selector, callback);
-	  },
-
-	  // Marionette support
-	  append: function(fragment) {
-	    this[0].appendChild(fragment);
-	    return this;
-	  },
+	  bind: __webpack_require__(13)(cacheKeyProp, id, handlers, unusedKeys),
+	  unbind: __webpack_require__(14)(cacheKeyProp, id, handlers, unusedKeys),
+	  delegate: __webpack_require__(15)(cacheKeyProp, id, handlers, unusedKeys),
+	  undelegate: __webpack_require__(16)(cacheKeyProp, id, handlers, unusedKeys),
+	  append: __webpack_require__(17),
+	  on: __webpack_require__(18)(cacheKeyProp, id, handlers, unusedKeys),
+	  off: __webpack_require__(19)(cacheKeyProp, id, handlers, unusedKeys),
 	};
 
-	$.ajax = __webpack_require__(13);
-	$.contains = __webpack_require__(14);
-	$.Deferred = __webpack_require__(15);
+	$.ajax = __webpack_require__(20);
+	$.contains = __webpack_require__(21);
+	$.Deferred = __webpack_require__(22);
 
 	module.exports = $;
 
@@ -509,6 +455,110 @@ window["jQuery"] =
 
 /***/ },
 /* 13 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = function(cacheKeyProp, id, handlers, unusedKeys) {
+	  var on = __webpack_require__(3)(cacheKeyProp, id, handlers, unusedKeys);
+
+	  return function(eventName, callback){
+	    return this.on(eventName, callback);
+	  };
+	};
+
+
+/***/ },
+/* 14 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = function(cacheKeyProp, id, handlers, unusedKeys) {
+	  var off = __webpack_require__(6)(cacheKeyProp, id, handlers, unusedKeys);
+
+	  return function(eventName, callback){
+	    return this.off(eventName, callback);
+	  };
+	};
+
+
+/***/ },
+/* 15 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = function(cacheKeyProp, id, handlers, unusedKeys) {
+	  var on = __webpack_require__(3)(cacheKeyProp, id, handlers, unusedKeys);
+
+	  return function(selector, eventName, callback){
+	    return this.on(eventName, selector, callback);
+	  };
+	};
+
+
+/***/ },
+/* 16 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = function(cacheKeyProp, id, handlers, unusedKeys) {
+	  var off = __webpack_require__(6)(cacheKeyProp, id, handlers, unusedKeys);
+
+	  return function(selector, eventName, callback){
+	    return this.off(eventName, selector, callback);
+	  };
+	};
+
+
+/***/ },
+/* 17 */
+/***/ function(module, exports) {
+
+	module.exports = function(fragment) {
+	  this[0].appendChild(fragment);
+	  return this;
+	};
+
+
+/***/ },
+/* 18 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Bind an event handler to this element.
+	 *
+	 * @param {string} eventName The event to bind, e.g. 'click'.
+	 * @param {string} selector (Optional) The selector to match when an event propagates up.
+	 * @param {function(Event, Element)} callback The function to call when the event is fired.
+	 */
+	module.exports = function(cacheKeyProp, id, handlers, unusedKeys) {
+	  var on = __webpack_require__(3)(cacheKeyProp, id, handlers, unusedKeys);
+
+	  return function(eventName, selector, callback){
+	    on(this[0], eventName, selector, callback);
+	    return this;
+	  };
+	};
+
+
+/***/ },
+/* 19 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Unbind an event handler to this element.
+	 *
+	 * @param {string} eventName (Optional) The event to unbind, e.g. 'click'.
+	 * @param {string} selector (Optional) The selector to unbind.
+	 * @param {function(Event, Element)} callback (Optional) The function to unbind.
+	 */
+	module.exports = function(cacheKeyProp, id, handlers, unusedKeys) {
+	  var off = __webpack_require__(6)(cacheKeyProp, id, handlers, unusedKeys);
+
+	  return function(eventName, selector, callback){
+	    off(this[0], eventName, selector, callback);
+	    return this;
+	  };
+	};
+
+
+/***/ },
+/* 20 */
 /***/ function(module, exports) {
 
 	/**
@@ -586,7 +636,7 @@ window["jQuery"] =
 	};
 
 /***/ },
-/* 14 */
+/* 21 */
 /***/ function(module, exports) {
 
 	module.exports = function(container, contained) {
@@ -601,7 +651,7 @@ window["jQuery"] =
 
 
 /***/ },
-/* 15 */
+/* 22 */
 /***/ function(module, exports) {
 
 	/**
