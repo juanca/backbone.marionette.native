@@ -16,10 +16,10 @@ describe('Backbone.Native contains', function(){
       '</div>' +
       '<div class="four"></div>';
 
-    one = this.element.querySelector('.one');
-    two = one.querySelector('.two');
-    three = two.querySelector('.three');
-    four = this.element.querySelector('.four');
+    one = $(this.element.querySelector('.one'));
+    two = $(one[0].querySelector('.two'));
+    three = $(two[0].querySelector('.three'));
+    four = $(this.element.querySelector('.four'));
   });
 
   it('finds the immediate child', function(){
