@@ -148,8 +148,9 @@ window["jQuery"] =
 	  find: null,
 
 	  attr: __webpack_require__(8),
-	  html: __webpack_require__(9),
-	  remove: __webpack_require__(10)(cacheKeyProp, id, handlers, unusedKeys),
+	  contents: __webpack_require__(9),
+	  html: __webpack_require__(10),
+	  remove: __webpack_require__(11)(cacheKeyProp, id, handlers, unusedKeys),
 
 	  /**
 	   * Bind an event handler to this element.
@@ -196,9 +197,9 @@ window["jQuery"] =
 	  },
 	};
 
-	$.ajax = __webpack_require__(11);
-	$.contains = __webpack_require__(12);
-	$.Deferred = __webpack_require__(13);
+	$.ajax = __webpack_require__(12);
+	$.contains = __webpack_require__(13);
+	$.Deferred = __webpack_require__(14);
 
 	module.exports = $;
 
@@ -434,6 +435,15 @@ window["jQuery"] =
 /* 9 */
 /***/ function(module, exports) {
 
+	module.exports = function(){
+	    return this[0].childNodes;
+	};
+
+
+/***/ },
+/* 10 */
+/***/ function(module, exports) {
+
 	/**
 	 * Set the HTML content of the element. Backbone does not use the no-argument version
 	 * to read innerHTML, so that has not been implemented.
@@ -452,7 +462,7 @@ window["jQuery"] =
 
 
 /***/ },
-/* 10 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -487,7 +497,7 @@ window["jQuery"] =
 
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports) {
 
 	/**
@@ -565,7 +575,7 @@ window["jQuery"] =
 	};
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports) {
 
 	module.exports = function(container, contained) {
@@ -580,7 +590,7 @@ window["jQuery"] =
 
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports) {
 
 	/**
