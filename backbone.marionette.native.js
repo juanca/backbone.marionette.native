@@ -149,8 +149,9 @@ window["jQuery"] =
 
 	  attr: __webpack_require__(8),
 	  contents: __webpack_require__(9),
-	  html: __webpack_require__(10),
-	  remove: __webpack_require__(11)(cacheKeyProp, id, handlers, unusedKeys),
+	  detach: __webpack_require__(10),
+	  html: __webpack_require__(11),
+	  remove: __webpack_require__(12)(cacheKeyProp, id, handlers, unusedKeys),
 
 	  /**
 	   * Bind an event handler to this element.
@@ -197,9 +198,9 @@ window["jQuery"] =
 	  },
 	};
 
-	$.ajax = __webpack_require__(12);
-	$.contains = __webpack_require__(13);
-	$.Deferred = __webpack_require__(14);
+	$.ajax = __webpack_require__(13);
+	$.contains = __webpack_require__(14);
+	$.Deferred = __webpack_require__(15);
 
 	module.exports = $;
 
@@ -436,12 +437,22 @@ window["jQuery"] =
 /***/ function(module, exports) {
 
 	module.exports = function(){
-	    return this[0].childNodes;
+	  return this[0].childNodes;
 	};
 
 
 /***/ },
 /* 10 */
+/***/ function(module, exports) {
+
+	module.exports = function(){
+	  var parentNode = this[0].parentNode;
+	  return parentNode ? parentNode.removeChild(this[0]) : void 0;
+	};
+
+
+/***/ },
+/* 11 */
 /***/ function(module, exports) {
 
 	/**
@@ -462,7 +473,7 @@ window["jQuery"] =
 
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -497,7 +508,7 @@ window["jQuery"] =
 
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports) {
 
 	/**
@@ -575,7 +586,7 @@ window["jQuery"] =
 	};
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports) {
 
 	module.exports = function(container, contained) {
@@ -590,7 +601,7 @@ window["jQuery"] =
 
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports) {
 
 	/**
