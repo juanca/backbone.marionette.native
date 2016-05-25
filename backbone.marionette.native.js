@@ -95,6 +95,7 @@ window["jQuery"] =
 	  // Call as a constructor if it was used as a function.
 	  if (!(this instanceof $)) return new $(element, context);
 
+	  var elements;
 	  context = context || document;
 
 	  if (!element){
@@ -118,11 +119,16 @@ window["jQuery"] =
 	        this.length = 0;
 	      }
 	    }
+	  } else if (element instanceof NodeList) {
+	    elements = element;
+	    this.length = elements.length;
+	    for(var i = 0; i < elements.length; i += 1) this[i] = elements[i];
 	  } else {
 	    // This handles both the 'Element' and 'Window' case, as both support
 	    // event binding via 'addEventListener'.
-	    this[0] = element;
-	    this.length = 1;
+	    elements = [].concat(element);
+	    this.length = elements.length;
+	    for(var i = 0; i < elements.length; i += 1) this[i] = elements[i];
 	  }
 	}
 
@@ -131,7 +137,7 @@ window["jQuery"] =
 	  appendTo: null,
 	  find: null,
 	  attr: __webpack_require__(8),
-	  contents: __webpack_require__(9),
+	  contents: __webpack_require__(9)($),
 	  detach: __webpack_require__(10),
 	  html: __webpack_require__(11),
 	  remove: __webpack_require__(12)(cacheKeyProp, id, handlers, unusedKeys),
@@ -382,8 +388,10 @@ window["jQuery"] =
 /* 9 */
 /***/ function(module, exports) {
 
-	module.exports = function(){
-	  return this[0].childNodes;
+	module.exports = function($){
+	  return function() {
+	    return $(this[0].childNodes);
+	  };
 	};
 
 
@@ -391,9 +399,15 @@ window["jQuery"] =
 /* 10 */
 /***/ function(module, exports) {
 
-	module.exports = function(){
-	  var parentNode = this[0].parentNode;
-	  return parentNode ? parentNode.removeChild(this[0]) : void 0;
+	module.exports = function() {
+	  var parentNode;
+
+	  for(var i = 0; i < this.length; i += 1) {
+	    parentNode = this[i].parentNode;
+	    if(parentNode) parentNode.removeChild(this[i]);
+	  }
+
+	  return this;
 	};
 
 
